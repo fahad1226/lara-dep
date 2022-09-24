@@ -14,7 +14,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        dd('I am from user observer class', $user);
+        // 
     }
 
     /**

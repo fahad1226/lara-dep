@@ -55,18 +55,6 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        // static::created(function ($user) {
-        //     dd('user created event from boot methods', $user);
-        // });
-
-        static::updated(function ($user) {
-            dd('this will trigger when the user data updates', $user);
-        });
-
-        static::deleted(function ($user) {
-            dd('this event will trigger when the user will be deleted', $user);
-        });
-
         # we can see that this logic is increasing in this PHP script, it will be hard to maintain the logoc grow,
         # and that's where Pbserver comes into play.
     }
@@ -88,5 +76,11 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+
+    public function compnay()
+    {
+        return $this->belongsTo(Company::class);
     }
 }
