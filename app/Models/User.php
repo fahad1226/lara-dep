@@ -49,37 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /** Event Methods */
-
-    public static function boot()
-    {
-        parent::boot();
-
-        # we can see that this logic is increasing in this PHP script, it will be hard to maintain the logoc grow,
-        # and that's where Pbserver comes into play.
-    }
-
-    public function address()
-    {
-        return $this->hasOne(Address::class)->withDefault([
-            'name' => 'Not Available'
-        ]);
-    }
-
-
-    public function addresses()
-    {
-        return $this->hasMany(Address::class);
-    }
-
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
-
-
-    public function compnay()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }

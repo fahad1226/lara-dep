@@ -18,7 +18,6 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'   => User::all()->random()->id,
             'name'      => fake()->company(),
             'location'  => fake()->address(),
         ];
