@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         $companies = collect(Company::all()->modelKeys());
         $data = [];
 
-        for ($i = 0; $i < 40000; $i++) {
+        for ($i = 0; $i < 10000; $i++) {
             $data[] = [
                 'name'              => fake()->name(),
                 'email'             => fake()->unique()->email,
@@ -30,6 +30,7 @@ class UserSeeder extends Seeder
             ];
         }
 
+        # fatest way to seed may datas
         foreach (array_chunk($data, 1000) as $chunk) {
             User::insert($chunk);
         }
