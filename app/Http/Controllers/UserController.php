@@ -12,7 +12,7 @@ class UserController extends Controller
         $users = User::query()
             ->with('company')
             ->orderBy('name')
-            ->simplePaginate();
+            ->simplePaginate(30);
         return view('users.index', compact('users'));
     }
 }

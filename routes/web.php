@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('users', [UserController::class, 'index'])->name('users');
+Route::get('users', [UserController::class, 'index'])->name('users')->middleware('auth');
+Route::get('posts', [PostController::class, 'index'])->name('users')->middleware('auth');
 
 require __DIR__ . '/auth.php';
