@@ -51,7 +51,9 @@ class User extends Authenticatable
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->hasOne(Company::class)->withDefault([
+            'name' => 'Not Yet Assigned'
+        ]);
     }
 
 

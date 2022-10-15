@@ -46,9 +46,13 @@
               </tbody>
             </table>
           </div>
+         
         </div>
       </div>
     </div>
+   <div class="flex justify-center pb-28 pt-4">
+    {{ $users->links() }}
+   </div>
   </div>
   
 
