@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Events\UserCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -56,9 +55,24 @@ class User extends Authenticatable
         ]);
     }
 
-
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function logins()
+    {
+        return $this->hasMany(Login::class);
+    }
+
+    public function scopeWithLastLoginAt($query)
+    {
+        $query->addSelect([
+            'last_login_at' => Login::select('login_at')
+                ->whereColumn('user_id', 'users.id')
+                ->latest()
+                ->take(1)
+        ])
+            ->withCasts(['last_login_at' => 'datetime']);
     }
 }

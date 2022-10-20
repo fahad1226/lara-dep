@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Company;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,12 +17,12 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
-        $companies = collect(Company::all()->modelKeys());
+        $users = collect(User::all()->modelKeys());
         
         return [
             'name'        => fake()->company(),
             'location'    => fake()->address(),
-            'company_id'  => $companies->random(),
+            'user_id'     => $users->random(),
         ];
     }
 }
