@@ -48,6 +48,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="flex justify-center pb-28 pt-4">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </div>

@@ -15,16 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', fn () => view('welcome'));
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('users', [UserController::class, 'index'])->name('users');
+    Route::get('posts', [PostController::class, 'index'])->name('posts');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-
-Route::get('users', [UserController::class, 'index'])->name('users')->middleware('auth');
-Route::get('posts', [PostController::class, 'index'])->name('users')->middleware('auth');
 
 require __DIR__ . '/auth.php';
